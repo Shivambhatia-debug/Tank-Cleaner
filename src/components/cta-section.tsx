@@ -244,7 +244,7 @@ export default function CTASection() {
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
                 <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-                  We'll respond within 24 hours
+                  We&apos;ll respond within 24 hours
                 </p>
               </form>
             </div>
