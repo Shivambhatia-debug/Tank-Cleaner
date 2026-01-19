@@ -73,8 +73,7 @@ export default function Hero() {
               transition={{ delay: 0.3 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
             >
-              <span className="text-gray-900 dark:text-white">पानी टंकी की</span>{" "}
-              <span className="gradient-text">सफाई सेवा</span>
+              <span className="gradient-text">पानी टंकी की सफाई</span>
             </motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
