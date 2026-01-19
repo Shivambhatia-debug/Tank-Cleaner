@@ -9,9 +9,9 @@ import Footer from "@/components/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Water Tank Clean Service | शुद्ध पानी, स्वस्थ परिवार | पानी टंकी सफाई दरभंगा",
-  description: "दरभंगा में पानी टंकी सफाई सेवा। शुद्ध पानी, स्वस्थ परिवार। आधुनिक मशीन द्वारा Sintex टंकी की सफाई। 10+ वर्षों का अनुभव। सुरक्षित, कुशल और पर्यावरण के अनुकूल समाधान।",
-  keywords: "पानी टंकी सफाई, water tank clean service, शुद्ध पानी स्वस्थ परिवार, darbhanga tank cleaning, sintex tank cleaning, tank cleaning darbhanga, industrial tank cleaning, residential tank cleaning",
+  title: "Cleaning Hero | शुद्ध पानी, स्वस्थ परिवार | AC, Tank & Deep Cleaning Services Darbhanga",
+  description: "Cleaning Hero - दरभंगा में AC सफाई, पानी टंकी सफाई, एक्वेरियम सफाई, बाथरूम गहरी सफाई और सेप्टिक टैंक सेवाएं। शुद्ध पानी, स्वस्थ परिवार। 10+ वर्षों का अनुभव। सुरक्षित, कुशल और पर्यावरण के अनुकूल समाधान।",
+  keywords: "cleaning hero, AC cleaning, water tank cleaning, aquarium cleaning, bathroom deep cleaning, septic tank cleaning, darbhanga cleaning services, tank cleaning darbhanga, cleaning services bihar",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
         >
           <LanguageProvider>
             <Navbar />
-            <main className="min-h-screen">{children}</main>
+            <main className="min-h-screen pb-20 md:pb-0">{children}</main>
             <Footer />
           </LanguageProvider>
         </ThemeProvider>

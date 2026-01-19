@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Droplets, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, ArrowRight, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   services: [
-    { name: "Industrial Cleaning", href: "#services" },
-    { name: "Residential Cleaning", href: "#services" },
-    { name: "Commercial Cleaning", href: "#services" },
-    { name: "Chemical Tank Service", href: "#services" },
-    { name: "Oil Tank Cleaning", href: "#services" },
+    { name: "AC Cleaning", href: "#services" },
+    { name: "Aquarium Tank Cleaning", href: "#services" },
+    { name: "Water Tank Cleaning", href: "#services" },
+    { name: "Bathroom Deep Cleaning", href: "#services" },
+    { name: "Septic Tank Service", href: "#services" },
   ],
   company: [
     { name: "About Us", href: "#about" },
@@ -56,11 +57,16 @@ export default function Footer() {
             className="lg:col-span-2"
           >
             <Link href="/" className="flex items-center space-x-2 mb-4 group">
-              <div className="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg transform group-hover:scale-110 transition-transform">
-                <Droplets className="w-6 h-6 text-white" />
+              <div className="relative w-10 h-10 transform group-hover:scale-110 transition-transform">
+                <Image
+                  src="/Cleaning Hero.svg"
+                  alt="Cleaning Hero Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white">Water Tank Clean Service</h3>
+                <h3 className="text-2xl font-bold text-white">Cleaning Hero</h3>
                 <p className="text-sm text-gray-400">शुद्ध पानी, स्वस्थ परिवार</p>
               </div>
             </Link>
@@ -72,23 +78,23 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <a
-                href="https://wa.me/919319329339"
+                href="https://wa.me/919031117300?text=Hello%20Cleaning%20Hero%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 text-gray-400 hover:text-green-400 transition-colors"
               >
                 <MessageCircle className="w-5 h-5 text-green-500" />
-                <span>WhatsApp: 9319329339</span>
+                <span>WhatsApp: 9031117300</span>
               </a>
               <a
-                href="tel:+919319329339"
+                href="tel:+919031117300"
                 className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors"
               >
                 <Phone className="w-5 h-5 text-blue-500" />
-                <span>Call: 9319329339</span>
+                <span>Call: 9031117300</span>
               </a>
               <a
-                href="mailto:info@guptacleaningservice.com"
+                href="mailto:kccdbg@gmail.com"
                 className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors"
               >
                 <Mail className="w-5 h-5 text-blue-500" />
@@ -197,7 +203,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Water Tank Clean Service, Darbhanga. All rights reserved.
+              © {new Date().getFullYear()} Cleaning Hero, Darbhanga. All rights reserved.
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <span className="flex items-center space-x-2">

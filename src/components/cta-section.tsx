@@ -2,8 +2,81 @@
 
 import { motion } from "framer-motion";
 import { Phone, Mail, MessageCircle, ArrowRight, CheckCircle } from "lucide-react";
+import { FormEvent, useRef, useState } from "react";
 
 export default function CTASection() {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const serviceRef = useRef<HTMLSelectElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<string>("");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("");
+
+    const name = nameRef.current?.value || "";
+    const phone = phoneRef.current?.value || "";
+    const email = emailRef.current?.value || "";
+    const service = serviceRef.current?.value || "";
+    const message = messageRef.current?.value || "";
+
+    try {
+      // Save to Google Sheets via API
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          service,
+          message,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      // Build WhatsApp message
+      const whatsappMessage = `Hello Cleaning Hero,
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email || "Not provided"}
+Service: ${service}
+Message: ${message}
+
+Looking forward to your response.`;
+
+      // Redirect to WhatsApp
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      window.open(
+        `https://wa.me/919031117300?text=${encodedMessage}`,
+        "_blank"
+      );
+
+      setSubmitStatus("success");
+      // Reset form
+      if (nameRef.current) nameRef.current.value = "";
+      if (phoneRef.current) phoneRef.current.value = "";
+      if (emailRef.current) emailRef.current.value = "";
+      if (serviceRef.current) serviceRef.current.value = "AC Cleaning";
+      if (messageRef.current) messageRef.current.value = "";
+
+      setTimeout(() => setSubmitStatus(""), 3000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus(""), 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 via-cyan-600 to-teal-600 relative overflow-hidden">
       {/* Animated Background Elements */}
@@ -132,7 +205,7 @@ export default function CTASection() {
               className="flex flex-wrap gap-4"
             >
               <motion.a
-                href="https://wa.me/919319329339"
+                href="https://wa.me/919031117300?text=Hello%20Cleaning%20Hero%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -140,19 +213,19 @@ export default function CTASection() {
                 className="flex items-center space-x-2 px-6 py-3 bg-green-500/90 backdrop-blur-sm rounded-lg hover:bg-green-500 transition-all shadow-lg text-white"
               >
                 <MessageCircle className="w-5 h-5 text-white" />
-                <span className="font-medium text-white">WhatsApp: 9319329339</span>
+                <span className="font-medium text-white">WhatsApp: 9031117300</span>
               </motion.a>
               <motion.a
-                href="tel:+919319329339"
+                href="tel:+919031117300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-all text-gray-900"
               >
                 <Phone className="w-5 h-5 text-gray-900" />
-                <span className="font-medium text-gray-900">Call: 9319329339</span>
+                <span className="font-medium text-gray-900">Call: 9031117300</span>
               </motion.a>
               <motion.a
-                href="mailto:info@guptacleaningservice.com"
+                href="mailto:kccdbg@gmail.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-all text-gray-900"
@@ -175,13 +248,14 @@ export default function CTASection() {
               <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
                 Request a Free Quote
               </h3>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Name *
                     </label>
                     <input
+                      ref={nameRef}
                       type="text"
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
@@ -193,20 +267,21 @@ export default function CTASection() {
                       Phone *
                     </label>
                     <input
+                      ref={phoneRef}
                       type="tel"
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                      placeholder="9319329339"
+                      placeholder="9031117300"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email *
+                    Email
                   </label>
                   <input
+                    ref={emailRef}
                     type="email"
-                    required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                     placeholder="your@email.com"
                   />
@@ -215,13 +290,12 @@ export default function CTASection() {
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Service Type
                   </label>
-                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
-                    <option>Industrial Tank Cleaning</option>
-                    <option>Residential Tank Cleaning</option>
-                    <option>Commercial Tank Cleaning</option>
-                    <option>Chemical Tank Cleaning</option>
-                    <option>Oil Tank Cleaning</option>
-                    <option>Water Tank Maintenance</option>
+                  <select ref={serviceRef} className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                    <option>AC Cleaning</option>
+                    <option>Aquarium Tank Cleaning</option>
+                    <option>Water Tank Cleaning</option>
+                    <option>Bathroom Deep Cleaning</option>
+                    <option>Septic Tank (Tie-up Model)</option>
                   </select>
                 </div>
                 <div>
@@ -229,6 +303,7 @@ export default function CTASection() {
                     Message
                   </label>
                   <textarea
+                    ref={messageRef}
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                     placeholder="Tell us about your requirements..."
@@ -236,13 +311,24 @@ export default function CTASection() {
                 </div>
                 <motion.button
                   type="submit"
+                  disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2"
+                  className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span>Submit Request</span>
-                  <ArrowRight className="w-5 h-5" />
+                  <span>{isSubmitting ? "Submitting..." : "Submit Request"}</span>
+                  {!isSubmitting && <ArrowRight className="w-5 h-5" />}
                 </motion.button>
+                {submitStatus === "success" && (
+                  <p className="text-sm text-green-600 dark:text-green-400 text-center font-medium">
+                    ✓ Form submitted! Redirecting to WhatsApp...
+                  </p>
+                )}
+                {submitStatus === "error" && (
+                  <p className="text-sm text-red-600 dark:text-red-400 text-center font-medium">
+                    ✗ Error submitting form. Please try again.
+                  </p>
+                )}
                 <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
                   We&apos;ll respond within 24 hours
                 </p>
