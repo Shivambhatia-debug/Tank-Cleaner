@@ -76,7 +76,7 @@ export default function Services() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 mb-4"
+            className="inline-block px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 mb-4"
           >
             <span className="text-sm font-medium">Our Services</span>
           </motion.div>
@@ -105,7 +105,7 @@ export default function Services() {
               whileHover={{ y: -5 }}
               className="group relative"
             >
-              <div className="h-full p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 overflow-hidden">
+              <div className="h-full p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 overflow-hidden">
                 {/* Background Gradient on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
 
@@ -121,7 +121,7 @@ export default function Services() {
                   </motion.div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                     {service.title}
                   </h3>
                   {service.titleHindi && (
@@ -158,7 +158,7 @@ export default function Services() {
                   {/* CTA Button */}
                   <motion.button
                     whileHover={{ x: 5 }}
-                    className="flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-3 transition-all"
+                    className="flex items-center space-x-2 text-orange-600 dark:text-orange-400 font-semibold group-hover:gap-3 transition-all"
                   >
                     <span>Learn More</span>
                     <ArrowRight className="w-5 h-5" />

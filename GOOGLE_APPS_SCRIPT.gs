@@ -2,7 +2,7 @@
 // Deploy as Web App: New deployment → Type: Web App → Execute as: Me → Allow: Anyone
 
 const SHEET_NAME = "Contact Submissions";
-const EMAIL_RECIPIENT = "kccdbg@gmail.com";
+const EMAIL_RECIPIENT = "";
 
 // Initialize sheet with headers if it doesn't exist
 function initializeSheet() {
@@ -175,7 +175,7 @@ function test() {
   
   const testData = {
     name: "Test User 123",
-    phone: "9031117300",
+    phone: "903 111 6900",
     email: "test@example.com",
     service: "Water Tank Cleaning",
     message: "This is a test message from Apps Script"

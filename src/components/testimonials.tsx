@@ -81,7 +81,7 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 mb-4"
+            className="inline-block px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 mb-4"
           >
             <span className="text-sm font-medium">Client Reviews</span>
           </motion.div>
@@ -110,7 +110,7 @@ export default function Testimonials() {
               <div className="h-full p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 relative overflow-hidden">
                 {/* Quote Icon */}
                 <div className="absolute top-4 right-4 opacity-10 dark:opacity-20">
-                  <Quote className="w-16 h-16 text-blue-600 dark:text-blue-400" />
+                  <Quote className="w-16 h-16 text-orange-600 dark:text-orange-400" />
                 </div>
 
                 {/* Content */}

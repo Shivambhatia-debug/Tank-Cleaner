@@ -37,9 +37,9 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+    <footer className="bg-white text-gray-700 relative overflow-hidden">
+      {/* Background Pattern - Hidden */}
+      <div className="absolute inset-0 opacity-0">
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}></div>
@@ -66,11 +66,14 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white">Cleaning Hero</h3>
-                <p className="text-sm text-gray-400">शुद्ध पानी, स्वस्थ परिवार</p>
+                <h3 className="text-2xl font-bold">
+                  <span className="text-blue-600">Cleaning</span>{" "}
+                  <span className="text-orange-500">Hero</span>
+                </h3>
+                <p className="text-sm text-blue-500">शुद्ध पानी, स्वस्थ परिवार</p>
               </div>
             </Link>
-            <p className="text-gray-400 mb-6 leading-relaxed max-w-md">
+            <p className="text-gray-700 mb-6 leading-relaxed max-w-md">
               शुद्ध पानी, स्वस्थ परिवार। दरभंगा में पानी टंकी सफाई की अग्रणी सेवा प्रदाता। 10+ वर्षों के अनुभव के साथ सुरक्षित, 
               कुशल और पर्यावरण के अनुकूल समाधान। आधुनिक मशीन द्वारा Sintex टंकी की सफाई।
             </p>
@@ -78,29 +81,22 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <a
-                href="https://wa.me/919031117300?text=Hello%20Cleaning%20Hero%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services"
+                href="https://wa.me/919031116900?text=Hello%20Cleaning%20Hero%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-3 text-gray-400 hover:text-green-400 transition-colors"
+                className="flex items-center space-x-3 text-gray-700 hover:text-green-600 transition-colors"
               >
                 <MessageCircle className="w-5 h-5 text-green-500" />
-                <span>WhatsApp: 9031117300</span>
+                <span>WhatsApp: 903 111 6900</span>
               </a>
               <a
-                href="tel:+919031117300"
-                className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors"
+                href="tel:+919031116900"
+                className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors"
               >
                 <Phone className="w-5 h-5 text-blue-500" />
-                <span>Call: 9031117300</span>
+                <span>Call: 903 111 6900</span>
               </a>
-              <a
-                href="mailto:kccdbg@gmail.com"
-                className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors"
-              >
-                <Mail className="w-5 h-5 text-blue-500" />
-                <span>info@guptacleaningservice.com</span>
-              </a>
-              <div className="flex items-start space-x-3 text-gray-400">
+              <div className="flex items-start space-x-3 text-gray-700">
                 <MapPin className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
                 <span>दरभंगा, बिहार | Darbhanga, Bihar</span>
               </div>
@@ -114,7 +110,7 @@ export default function Footer() {
                   href={social.href}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 bg-gray-800 hover:bg-blue-600 rounded-lg transition-colors"
+                  className="p-2 bg-blue-100 hover:bg-blue-600 text-blue-600 hover:text-white rounded-lg transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
@@ -130,13 +126,13 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.6 }}
           >
-            <h4 className="text-white font-bold mb-4">Services</h4>
+            <h4 className="text-blue-600 font-bold mb-4">Services</h4>
             <ul className="space-y-2">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
+                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors group"
                   >
                     <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span>{link.name}</span>
@@ -153,13 +149,13 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <h4 className="text-white font-bold mb-4">Company</h4>
+            <h4 className="text-blue-600 font-bold mb-4">Company</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
+                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors group"
                   >
                     <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span>{link.name}</span>
@@ -176,13 +172,13 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <h4 className="text-white font-bold mb-4">Legal</h4>
+            <h4 className="text-blue-600 font-bold mb-4">Legal</h4>
             <ul className="space-y-2">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
+                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors group"
                   >
                     <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span>{link.name}</span>
@@ -199,13 +195,13 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="border-t border-gray-800 pt-8 mt-8"
+          className="border-t border-blue-200 pt-8 mt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-700 text-sm">
               © {new Date().getFullYear()} Cleaning Hero, Darbhanga. All rights reserved.
             </p>
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
+            <div className="flex items-center space-x-6 text-sm text-gray-700">
               <span className="flex items-center space-x-2">
                 <span>Certified & Insured</span>
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>

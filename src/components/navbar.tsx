@@ -66,7 +66,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 dark:text-gray-300 font-medium hover:text-blue-600 transition"
+                  className="text-gray-700 dark:text-gray-300 font-medium hover:text-orange-600 transition"
                 >
                   {language === "hi" ? item.name : item.nameEn}
                 </Link>
@@ -77,7 +77,7 @@ export default function Navbar() {
             <div className="flex items-center gap-1">
               <button
                 onClick={toggleLanguage}
-                className="p-1.5 rounded-lg bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800 transition"
+                className="p-1.5 rounded-lg bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 hover:bg-orange-200 dark:hover:bg-orange-800 transition"
               >
                 <Languages className="w-4 h-4" />
               </button>
@@ -145,7 +145,7 @@ export default function Navbar() {
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t shadow-lg">
         <div className="flex items-center justify-around px-4 py-2 gap-2">
           <a
-            href="tel:+919031117300"
+            href="tel:+919031116900"
             className="flex flex-col items-center justify-center flex-1 py-3 px-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
           >
             <Phone className="w-5 h-5" />
@@ -153,7 +153,7 @@ export default function Navbar() {
           </a>
 
           <a
-  href="https://wa.me/919031117300?text=Hello%20Cleaning%20Hero,%0A%0AI%20am%20looking%20for%20professional%20water%20tank%20cleaning%20services%20for%20my%20premises.%0AKindly%20share%20details%20regarding%20the%20cleaning%20process,%20pricing,%20availability,%20and%20booking%20procedure.%0A%0ALooking%20forward%20to%20your%20response.%0A%0AThank%20you."
+  href="https://wa.me/919031116900?text=Hello%20Cleaning%20Hero,%0A%0AI%20am%20looking%20for%20professional%20water%20tank%20cleaning%20services%20for%20my%20premises.%0AKindly%20share%20details%20regarding%20the%20cleaning%20process,%20pricing,%20availability,%20and%20booking%20procedure.%0A%0ALooking%20forward%20to%20your%20response.%0A%0AThank%20you."
   target="_blank"
   rel="noopener noreferrer"
   className="flex flex-col items-center justify-center flex-1 py-3 px-3 rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"

@@ -26,7 +26,7 @@ export default function CTASection() {
 
     try {
       // Save to Google Sheets via API
-      await fetch("/api/contact", {
+      const apiResponse = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,6 +40,14 @@ export default function CTASection() {
           timestamp: new Date().toISOString(),
         }),
       });
+
+      if (!apiResponse.ok) {
+        console.error("API response error:", apiResponse.status);
+        throw new Error("Form submission failed");
+      }
+
+      const result = await apiResponse.json();
+      console.log("Form submission response:", result);
 
       // Build WhatsApp message
       const whatsappMessage = `Hello Cleaning Hero,
@@ -55,7 +63,7 @@ Looking forward to your response.`;
       // Redirect to WhatsApp
       const encodedMessage = encodeURIComponent(whatsappMessage);
       window.open(
-        `https://wa.me/919031117300?text=${encodedMessage}`,
+        `https://wa.me/919031116900?text=${encodedMessage}`,
         "_blank"
       );
 
@@ -78,7 +86,7 @@ Looking forward to your response.`;
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 via-cyan-600 to-teal-600 relative overflow-hidden">
+    <section id="contact" className="py-20 bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <motion.div
@@ -141,7 +149,7 @@ Looking forward to your response.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.35 }}
-              className="text-2xl md:text-3xl font-semibold mb-6 text-blue-100"
+              className="text-2xl md:text-3xl font-semibold mb-6 text-orange-100"
             >
               Ready to Get Started?
             </motion.h3>
@@ -151,7 +159,7 @@ Looking forward to your response.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="text-lg text-blue-100 mb-4 leading-relaxed font-medium"
+              className="text-lg text-orange-100 mb-4 leading-relaxed font-medium"
             >
               आज ही मुफ्त सलाह और उद्धरण के लिए हमसे संपर्क करें। हमारी विशेषज्ञ टीम आपकी सभी टंकी सफाई जरूरतों में मदद के लिए तैयार है।
             </motion.p>
@@ -160,7 +168,7 @@ Looking forward to your response.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.45 }}
-              className="text-lg text-blue-100 mb-8 leading-relaxed"
+              className="text-lg text-orange-100 mb-8 leading-relaxed"
             >
               Contact us today for a free quote and consultation. Our expert team is ready to help you with all your tank cleaning needs.
             </motion.p>
@@ -190,7 +198,7 @@ Looking forward to your response.`;
                   <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
                   <div className="flex flex-col">
                     <span className="text-white font-medium">{benefit.en}</span>
-                    <span className="text-blue-100 text-sm">{benefit.hi}</span>
+                    <span className="text-orange-100 text-sm">{benefit.hi}</span>
                   </div>
                 </motion.div>
               ))}
@@ -205,7 +213,7 @@ Looking forward to your response.`;
               className="flex flex-wrap gap-4"
             >
               <motion.a
-                href="https://wa.me/919031117300?text=Hello%20Cleaning%20Hero%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services"
+                href="https://wa.me/919031116900?text=Hello%20Cleaning%20Hero%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -213,19 +221,19 @@ Looking forward to your response.`;
                 className="flex items-center space-x-2 px-6 py-3 bg-green-500/90 backdrop-blur-sm rounded-lg hover:bg-green-500 transition-all shadow-lg text-white"
               >
                 <MessageCircle className="w-5 h-5 text-white" />
-                <span className="font-medium text-white">WhatsApp: 9031117300</span>
+                <span className="font-medium text-white">WhatsApp: 903 111 6900</span>
               </motion.a>
               <motion.a
-                href="tel:+919031117300"
+                href="tel:+919031116900"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-all text-gray-900"
               >
                 <Phone className="w-5 h-5 text-gray-900" />
-                <span className="font-medium text-gray-900">Call: 9031117300</span>
+                <span className="font-medium text-gray-900">Call: 903 111 6900</span>
               </motion.a>
               <motion.a
-                href="mailto:kccdbg@gmail.com"
+                href="mailto:info@guptacleaningservice.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-all text-gray-900"
@@ -270,21 +278,16 @@ Looking forward to your response.`;
                       ref={phoneRef}
                       type="tel"
                       required
+                      maxLength={10}
+                      pattern="[0-9]{10}"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                      placeholder="9031117300"
+                      placeholder="9031116900"
+                      onInput={(e) => {
+                        const value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                        e.currentTarget.value = value.slice(0, 10);
+                      }}
                     />
                   </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <input
-                    ref={emailRef}
-                    type="email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    placeholder="your@email.com"
-                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -297,6 +300,17 @@ Looking forward to your response.`;
                     <option>Bathroom Deep Cleaning</option>
                     <option>Septic Tank (Tie-up Model)</option>
                   </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Email
+                  </label>
+                  <input
+                    ref={emailRef}
+                    type="email"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="your@email.com"
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">

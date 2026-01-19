@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-gray-900"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 dark:from-gray-900 dark:via-orange-900/20 dark:to-gray-900"></div>
       
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10"></div>
@@ -33,7 +33,7 @@ export default function Hero() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-20 right-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"
+        className="absolute top-20 right-10 w-72 h-72 bg-orange-400/20 rounded-full blur-3xl"
       ></motion.div>
       <motion.div
         animate={{
@@ -45,7 +45,7 @@ export default function Hero() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-20 left-10 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl"
+        className="absolute bottom-20 left-10 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl"
       ></motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -61,7 +61,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 mb-6"
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 mb-6"
             >
               <CheckCircle className="w-4 h-4" />
               <span className="text-sm font-medium">Trusted by 500+ Clients</span>
@@ -143,7 +143,11 @@ export default function Hero() {
                 whileTap={{ scale: 0.95 }}
                 onHoverStart={() => setIsHovered(true)}
                 onHoverEnd={() => setIsHovered(false)}
-                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2"
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <span>Get Free Quote</span>
                 <ArrowRight
@@ -151,13 +155,6 @@ export default function Hero() {
                     isHovered ? "translate-x-1" : ""
                   }`}
                 />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl font-semibold text-lg border-2 border-gray-300 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all"
-              >
-                Watch Video
               </motion.button>
             </motion.div>
           </motion.div>
